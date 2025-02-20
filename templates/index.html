@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-to-Action</title>
+    <link rel="stylesheet" href="{{ url_for('serve_static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎙 Voice-to-Action</h1>
+        <p class="subheading">Upload an audio file and receive a structured action report.</p>
+
+        <form id="uploadForm">
+            <div class="input-group">
+                <label for="email">📧 Enter Your Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="input-group">
+                <label for="audio_file">🎵 Upload Audio File (mp3):</label>
+                <input type="file" id="audio_file" name="audio_file" accept="audio/*" required>
+            </div>
+
+            <button type="submit">🚀 Submit</button>
+        </form>
+
+        <!-- Loading Message & Spinner -->
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>⏳ Please wait, processing your audio...</p>
+        </div>
+
+        <!-- Response Section -->
+        <div id="response" class="response-box hidden">
+            <h2>📄 Extracted Report:</h2>
+            <h3>📝 Transcribed Text:</h3>
+            <p id="transcription"></p>
+
+            <h3>✅ Action Items:</h3>
+            <p id="tasks"></p>
+
+            <p class="success-msg" id="emailStatus"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('serve_static', filename='script.js') }}"></script>
+</body>
+</html>
